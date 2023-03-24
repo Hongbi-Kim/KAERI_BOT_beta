@@ -1,0 +1,6 @@
+tenacity
+matplotlib
+plotly
+scipy
+scipy
+openai[embeddings]
