@@ -31,12 +31,27 @@
 </div>
 <br>
 <h2>5️⃣ 주요 개선 사항</h2>
-2023-03-05<br>
-&nbsp; - 이전 질문-답변을 페이지에 유지<br>
-&nbsp; - 이전 질문을 고려하여 답변 생성(추가 개선 중)<br>
-&nbsp; - 예시 질문 추가<br>
-&nbsp; - 답변 말투 일관되게 수정<br>
-&nbsp; - 파동이 그림 추가 및 투명 배경으로 수정<br>
+<table>
+  <thead>
+    <tr>
+      <th>개선 날짜</th>
+      <th>모델</th>
+      <th>서비스</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td> 2023-03-05<br><br><br></td>
+      <td>
+        1. 이전 질문을 고려하여 답변 생성(추가 개선 중)<br>
+        2. 답변 말투 일관되게 수정<br><br></td>
+      <td>
+        1. 이전 질문-답변을 페이지에 유지<br>
+        2. 예시 질문 추가<br>
+        3. 파동이 그림 추가 및 투명 배경으로 수정<br></td>
+    </tr>
+  </tbody>
+</table>
 <br>
 <h2>6️⃣ 참고 자료</h2>
 <p>&nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a></p>
