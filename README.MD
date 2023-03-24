@@ -6,6 +6,7 @@
 파동이봇은 규정에 관한 질문에 대해 자세하고 정확한 답변을 제공하는 앱입니다.<br>
 이 앱은 Python으로 작성되었으며, GPT-4 기반의 OpenAI API와 Streamlit을 활용하여 구현되었습니다.<br>
 사용자로부터 입력된 질문을 바탕으로, 한국원자력연구원의 규정 문서에서 유사한 내용을 찾아 대답합니다.<br>
+보안의 이유로 본 REPOSITORY에는 일부 파일만 공개됩니다.<br>
 <p>👉🏻 <a href="https://hongbi-kim-kaeri-bot-app-s1t7nv.streamlit.app/">파동이앱 사용하기</a></p>
 <br>
 
