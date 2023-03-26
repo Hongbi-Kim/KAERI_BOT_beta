@@ -10,13 +10,13 @@
 <br>
 <h3> 👇🏻 예시 </h3>
 1) 초기화면
-<img src="images/예시3.jpg" alt="앱1"><br>
-<br>
+<img src="images/예시3.JPG" alt="앱1" width="70%">
+
 2) 질문 입력
-<img src="images/예시1.jpg" alt="앱1"><br>
-<br>
+<img src="images/예시1.JPG" alt="앱1" width="70%">
+
 3) 답변 생성 및 참고 문서 제공
-<img src="images/예시2.jpg" alt="앱1"><br>
+<img src="images/예시2.JPG" alt="앱1" width="70%">
 <br>
 <br>
 <h2>2️⃣ 주요 기능</h2>
