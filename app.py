@@ -5,8 +5,15 @@ import numpy as np
 import openai, uuid, time
 from openai.embeddings_utils import get_embedding, cosine_similarity # 텍스트 임베딩 API, 문장 간 유사성 계산
 import os, re, tenacity, pickle
+# from google.cloud import translate_v2 as translate
+# from google.oauth2 import service_account
 
 openai.api_key = st.secrets['openai']
+# # 서비스 계정 키 파일로부터 인증 정보를 가져옵니다.
+# credentials = service_account.Credentials.from_service_account_file(st.secrets['translate'])
+
+# # 인증 정보를 사용하여 클라이언트를 생성합니다.
+# translate_client = translate.Client(credentials=credentials)
 
 col1, col2 = st.columns([1,8])
 with col1:
@@ -42,7 +49,7 @@ def create_prompt(df, query, conversation_history):
                 conversation += f"Assistant: {st.session_state.chat_history[i]['bot']}\n"
         conversation += f"User: {conversation_history[-1]}\n"
     
-    system_role = f"""You are an AI language model whose expertise is reading and summarizing Korea Atomic Energy Research Institute regulatory documents. 
+    system_role = f"""You are an AI language model named "파동이" whose expertise is reading and summarizing Korea Atomic Energy Research Institute regulatory documents. 
     You must take the given embeddings and return a very detailed summary of the document in the language of the query. 
     Your conversation history is as follows:
 
@@ -85,6 +92,10 @@ def gpt(messages):
     print(response['answer'])
     return response
 
+def translate_text(text, target_language='ko'):
+    result = translate_client.translate(text, target_language)
+    return result['translatedText']
+
 if 'chat_history' not in st.session_state:
     st.session_state.conversation_history = []
     
@@ -106,10 +117,12 @@ with col2:
     pass
 with col3:
     if st.button("Send", key='message') or len(query) > 1:
+        # query_en = translate_text(query, "en")
         st.session_state.conversation_history.append(query)
         prompt = create_prompt(df, query, st.session_state.conversation_history)
         response = gpt(prompt)
         answer = response['answer']
+        # answer =  translate_text(answer, "ko")
         st.session_state.chat_history.append({"user": query, "bot": answer})
         paper = search_embeddings(df, query)
 
@@ -135,4 +148,3 @@ for chat in st.session_state.chat_history[::-1]:
     paper.rename(columns = {'text':'참고 내용','paper_title':'문서 제목'})
     st.dataframe(paper.iloc[:,[0,2]])
     st.markdown('---')
-
