@@ -4,3 +4,8 @@ plotly
 scipy
 scipy
 openai[embeddings]
+google-cloud-translate
+google-auth
+google-api-core
+google-auth-httplib2
+google-cloud-core
