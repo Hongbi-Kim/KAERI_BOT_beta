@@ -7,9 +7,18 @@
 이 앱은 Python으로 작성되었으며, GPT-3.5-turbo 기반의 OpenAI API와 Streamlit을 활용하여 구현되었습니다.<br>
 사용자로부터 입력된 질문을 바탕으로, 한국원자력연구원의 규정 문서에서 유사한 내용을 찾아 대답합니다.<br>
 보안의 이유로 본 REPOSITORY에는 일부 파일만 공개됩니다.<br>
-<p>👉🏻 <a href="https://hongbi-kim-kaeri-bot-app-s1t7nv.streamlit.app/">파동이앱 사용하기</a></p>
 <br>
-
+<h3> 👇🏻 예시 </h3>
+1) 초기화면
+<img src="images/예시3.jpg" alt="앱1"><br>
+<br>
+2) 질문 입력
+<img src="images/예시1.jpg" alt="앱1"><br>
+<br>
+3) 답변 생성 및 참고 문서 제공
+<img src="images/예시2.jpg" alt="앱1"><br>
+<br>
+<br>
 <h2>2️⃣ 주요 기능</h2>
 &nbsp; - 사용자의 질문에 대한 정확하고 자세한 답변 제공<br>
 &nbsp; - OpenAI API를 이용한 텍스트 임베딩 및 문장 간 유사성 계산<br>
