@@ -68,7 +68,7 @@
     </tr>
     <td> 2023-03-27<br></td>
       <td>
-        1. 전처리 꼼꼼하게 다시!!</td>
+        1. 전처리 꼼꼼하게 다시!! <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a></p></td>
       <td>
         <br></td>
     </tr>
@@ -76,4 +76,5 @@
 </table>
 <br>
 <h2>6️⃣ 참고 자료</h2>
-<p>&nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a></p>
+&nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a>
+<p>&nbsp; - <a href="https://github.com/haven-jeon/PyKoSpacing">PyKoSpacing</a></p>
