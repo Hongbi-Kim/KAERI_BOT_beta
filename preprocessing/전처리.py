@@ -91,6 +91,7 @@ class Chatbot():
         
         # 패턴 적용해서 결과 출력
         blob_text = re.sub(r'\([^)]*\)', ' ', blob_text) # (괄호 내용) 삭제
+        blob_text = re.sub(r'\<[^)]*\>', ' ', blob_text)
         blob_text = re.sub(r'부칙.*', '', blob_text)
         blob_text = re.sub(r"(\S) 라(\S)한다", r"\1라 \2한다", blob_text)
         blob_text = re.sub(r'([ㄱ-ㅎㅏ-ㅣ가-힣]) +\. ?', r'\1. ', blob_text)
@@ -136,7 +137,7 @@ class Chatbot():
             ss2.append(ss)
         else:
             if ss2 != []:
-                ss2[-1] = ss2[-1] + 'ss'
+                ss2[-1] = ss2[-1] + ss
             else:
                 ss2.append(ss)
         df = pd.DataFrame(ss2)
