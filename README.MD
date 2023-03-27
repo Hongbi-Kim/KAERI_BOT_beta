@@ -66,11 +66,13 @@
       <td>
         <br><br></td>
     </tr>
-    <td> 2023-03-27<br></td>
+    <td> 2023-03-27<br><br><br></td>
       <td>
-        1. 전처리 꼼꼼하게 다시!! <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a></p></td>
+        1. 전처리 꼼꼼하게 다시!! <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a><br>
+        2. 문서 단락 300/ 500글자씩 나눈 뒤 비교<br>
+        3. 영어 번역 vs. 300 vs. 500</td>
       <td>
-        <br></td>
+        1. 더 빠른 답변(번역)/ 빠른 답변(300)/ 정확한 답변(500) 옵션 추가 (For test)<br></td>
     </tr>
   </tbody>
 </table>
