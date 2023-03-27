@@ -2,12 +2,11 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>preprocessing</title>
 </head>
 <body>
   <h1>🥴PDF 문서 처리 및 텍스트 정제</h1>
-  <p>이 코드는 원문자를 일반 숫자로 변환하고, PDF 파일의 텍스트를 분석하여 처리하는 기능을 제공합니다.</p>
-
+  <p>이 코드는 PDF 파일을 불러온 뒤 텍스트를 분석하여 처리하는 기능을 제공한다.<br></p>
+  <br>
   <h2>1️⃣ 주요 함수 및 클래스</h2>
   <ul>
     <li>
@@ -29,10 +28,11 @@
     </ul>
     </li>
      </ul>
+    <br>
     <h2>2️⃣ 문제 상황</h2>
     1) 목차 구성이 문서마다 다름.<br>
-    <img src="images/문제1.png" alt="문제1" width="70%"><br>
-    <img src="images/문제2.png" alt="문제2" width="50%"><br><br>
+    <img src="../images/문제1.png" alt="문제1" width="80%">
+    <img src="../images/문제2.png" alt="문제2" width="60%"><br><br>
     2) 띄어쓰기, 부호 등 제대로 안 되어 있음.<br>
-    <img src="images/문제3.png" alt="문제3" width="70%"><br><br>
+    <img src="../images/문제3.png" alt="문제3" width="80%"><br><br>
 </body>
