@@ -32,7 +32,7 @@ class Chatbot():
 
             def visitor_body(text, cm, tm, fontDict, fontSize):
                 text = "".join([circled_to_normal(c) for c in text]) # 원문자
-                text = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9!@#$%^&*(),.?"-:{}<>%/\\]', '', text.strip())
+                text = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9!@#$%^&*(),.?~"-:{}<>%/\\]', '', text.strip())
                 x = tm[4]
                 y = tm[5]
                 page_text.append({
@@ -107,6 +107,8 @@ class Chatbot():
         blob_text = re.sub(pattern6, r'. \1', blob_text)
         pattern7 = r'\.(\d+)\.' # .1. -> . 1. 붙이기
         blob_text = re.sub(pattern7, r'. \1.', blob_text)
+        pattern8 = r'(\d+)\, (\d+)' # 숫자+,+숫자 붙이기
+        blob_text = re.sub(pattern8, r'\1,\2', blob_text)
         blob_text = re.sub(r'\s{2,}', ' ', blob_text)
         blob_text = re.sub(r"목차", r"", blob_text)
         paper_text = blob_text
@@ -168,4 +170,3 @@ df = df_all.copy()
 df.reset_index(inplace=True)
 df.drop(columns=['index'], inplace=True)
 print("Done processing pdf")
-
