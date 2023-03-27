@@ -66,6 +66,12 @@
       <td>
         <br><br></td>
     </tr>
+    <td> 2023-03-27<br></td>
+      <td>
+        1. 전처리 꼼꼼하게 다시!!</td>
+      <td>
+        <br></td>
+    </tr>
   </tbody>
 </table>
 <br>
