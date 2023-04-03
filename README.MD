@@ -9,13 +9,13 @@
 보안의 이유로 본 REPOSITORY에는 일부 파일만 공개됩니다.<br>
 <br>
 <h3> 👇🏻 예시 </h3>
-1) 초기화면
-<img src="images/예시3.JPG" alt="앱1" width="70%">
+1) 초기화면<br>
+<img src="images/예시3.JPG" alt="앱1" width="70%"><br>
 
-2) 질문 입력
-<img src="images/예시1.JPG" alt="앱1" width="70%">
+2) 질문 입력<br>
+<img src="images/예시1.JPG" alt="앱1" width="70%"><br>
 
-3) 답변 생성 및 참고 문서 제공
+3) 답변 생성 및 참고 문서 제공<br>
 <img src="images/예시2.JPG" alt="앱1" width="70%">
 <br>
 <br>
@@ -66,16 +66,27 @@
       <td>
         <br><br></td>
     </tr>
-    <td> 2023-03-27<br><br><br></td>
+    <td> 2023-03-27<br><br></td>
       <td>
-        1. 전처리 꼼꼼하게 다시!! <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a><br>
+        1. 전처리 꼼꼼하게 다시!!<br>
         [비교]<br>
         2. 문서 단락 300/ 500글자씩 나눈 뒤 비교<br>
         3. 영어 번역 vs. 300 vs. 500</td>
       <td>
-        1. 더 빠른 답변(번역)/ 빠른 답변(300)/ 정확한 답변(500) 옵션 추가 (For test)<br>
         [비교]<br>
+        1. 더 빠른 답변(번역)/ 빠른 답변(300)/ 정확한 답변(500) 옵션 추가 (For test)<br>
         2. 새로운 주제 옵션 추가 - 관련 없는 이전 질문에 영향을 받기 때문이다…</td>
+    </tr>
+    </tr>
+    <td> ~<br>2023-04-03</td>
+      <td>
+        1. 전처리 꼼꼼하게 문서 다 살펴보기😵‍💫 <br>
+        - 맞춤법, 기호, 
+        - 제*장, 제*조로 나눠서 내용의 흐름이 끊기지 않게 수정<br>
+        <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a> 
+      <td>
+        <br>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -83,3 +94,4 @@
 <h2>6️⃣ 참고 자료</h2>
 &nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a>
 <p>&nbsp; - <a href="https://github.com/haven-jeon/PyKoSpacing">PyKoSpacing</a></p>
+<p>&nbsp; - <a href="https://cloud.google.com/sdk/docs?hl=ko">Google Cloud</a></p>

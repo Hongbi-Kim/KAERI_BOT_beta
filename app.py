@@ -23,7 +23,7 @@ with col2:
     st.title('파동이봇')
 st.markdown('')
 
-with open('원규_note_up300_500.pkl', 'rb') as f:
+with open('정제파일/원예규_note_조.pkl', 'rb') as f:
     df_500 = pickle.load(f)
 with open('원규_note_up150_300.pkl', 'rb') as f:
     df_300 = pickle.load(f)
@@ -139,46 +139,16 @@ with col1:
 with col2:
     query = st.text_input("규정에 관련된 질문을 해주세요.:sunglasses: 새로운 주제로 넘어갈 때, [새로운 주제] 버튼을 누른 뒤 질문을 해주세요.", "", placeholder="예시: 휴가 결재는 누구한테 받아야 돼?")
     
-col_, col, col1, col2, col3 = st.columns([2, 4, 5,4.1,5])
-with col:
+col1, col2, col3 = st.columns([6,2,1])
+with col1:
+    pass
+with col2:
     if st.button("새로운 주제", key='new1'): 
         st.session_state.conversation_history = []
         st.session_state.chat_history = []
-with col1:
-    if st.button("더 빠른 답변(번역)", key='message1'): #or len(query) > 1:
-        query_en = translate_text(query, "en")
-        st.session_state.conversation_history.append(query)
-        if st.session_state.conversation_history:
-            for i, chat in enumerate(st.session_state.conversation_history[:-1]):
-                conversation += f"User: {chat}\n"
-                if i < len(st.session_state.conversation_history) - 2:
-                    conversation += f"Assistant: {st.session_state.chat_history[i]['bot']}\n"
-            conversation += f"User: {st.session_state.conversation_history[-1]}\n"
-        prompt = create_prompt_en(df_500, query_en, conversation)
-        
-        response = gpt(prompt)
-        answer = response['answer']
-        print(answer)
-        answer =  translate_text(answer, "ko")
-        paper = search_embeddings(df_500, query)
-        st.session_state.chat_history.append({"user": query, "bot": answer, "doc": paper.iloc[:,[0,2]]})
-with col2:
-    if st.button("빠른 답변(300)", key='message2'): #or len(query) > 1:
-        st.session_state.conversation_history.append(query)
-        if st.session_state.conversation_history:
-            for i, chat in enumerate(st.session_state.conversation_history[:-1]):
-                conversation += f"User: {chat}\n"
-                if i < len(st.session_state.conversation_history) - 2:
-                    conversation += f"Assistant: {st.session_state.chat_history[i]['bot']}\n"
-            conversation += f"User: {st.session_state.conversation_history[-1]}\n"
-        prompt = create_prompt(df_300, query, st.session_state.conversation_history)
-        response = gpt(prompt)
-        answer = response['answer']
-        print(answer)
-        paper = search_embeddings(df_300, query)
-        st.session_state.chat_history.append({"user": query, "bot": answer, "doc": paper.iloc[:,[0,2]]})
+        conversation = ""
 with col3:
-    if st.button("정확한 답변(500)", key='message3'): #or len(query) > 1:
+    if st.button("SEND", key='message3') or len(query) > 1:
         st.session_state.conversation_history.append(query)
         if st.session_state.conversation_history:
             for i, chat in enumerate(st.session_state.conversation_history[:-1]):
@@ -192,8 +162,6 @@ with col3:
         print(answer)
         paper = search_embeddings(df_500, query)
         st.session_state.chat_history.append({"user": query, "bot": answer, "doc": paper.iloc[:,[0,2]]})
-
-
 
 # 대화 기록 출력
 for chat in st.session_state.chat_history[::-1]:
