@@ -36,4 +36,7 @@
     <img src="../images/목차1.png" alt="문제1" width="80%"><br><br>
     2) 띄어쓰기, 부호 등 제대로 안 되어 있음.<br>
     <img src="../images/문제3.png" alt="문제3" width="80%"><br><br>
+    3) 문서 나누기<br>
+    <li>PDF 문서 전체를 prompt에 입력하면, 토큰 개수 제한으로 오류 발생</li>
+    <li>적절하게 문서를 나누는 것이 중요하다.</li>
 </body>

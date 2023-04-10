@@ -13,10 +13,10 @@
 <img src="images/예시3.JPG" alt="앱1" width="70%"><br>
 
 2) 질문 입력<br>
-<img src="images/예시1.JPG" alt="앱1" width="70%"><br>
+<img src="images/410_예시4.JPG" alt="앱1" width="70%"><br>
 
 3) 답변 생성 및 참고 문서 제공<br>
-<img src="images/예시2.JPG" alt="앱1" width="70%">
+<img src="images/410_예시3.JPG" alt="앱1" width="70%">
 <br>
 <br>
 <h2>2️⃣ 주요 기능</h2>
@@ -78,20 +78,31 @@
         2. 새로운 주제 옵션 추가 - 관련 없는 이전 질문에 영향을 받기 때문이다…</td>
     </tr>
     </tr>
-    <td> ~<br>2023-04-03</td>
+    <td>2023-04-03<br><br></td>
       <td>
         1. 전처리 꼼꼼하게 문서 다 살펴보기😵‍💫 <br>
-        - 맞춤법, 기호, 
-        - 제*장, 제*조로 나눠서 내용의 흐름이 끊기지 않게 수정<br>
+        <li>맞춤법, 기호</li>
+        <li>제*장, 제*조로 나눠서 내용의 흐름이 끊기지 않게 수정</li>
         <a href="https://github.com/Hongbi-Kim/KAERI_BOT_beta/blob/master/preprocessing">👉🏻 전처리 code 및 설명</a> 
       <td>
         <br>
       </td>
+    </tr>
+    <td> 2023-04-07<br><br></td>
+      <td>
+        1. 질문 관련 문서 검색 process 변경<br>
+        <li>cosine similarity : 2개 추출</li>
+        <li>bm25 : 1개 추출</li>
+        2. 문서 추가 및 문서를 더 세분화해서 전처리
+      <td>
+        1. DB 저장(질문-답변-평가)<br>
+        2. 답변 만족도 체크 기능<br>
+        3. gpt 답변 생성 서버와 streamlit 앱 서버 분리<br>(분산시스템 구축)</td>
+    </tr>
     </tr>
   </tbody>
 </table>
 <br>
 <h2>6️⃣ 참고 자료</h2>
 &nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a>
-<p>&nbsp; - <a href="https://github.com/haven-jeon/PyKoSpacing">PyKoSpacing</a></p>
 <p>&nbsp; - <a href="https://cloud.google.com/sdk/docs?hl=ko">Google Cloud</a></p>

@@ -5,6 +5,9 @@ from openai.embeddings_utils import get_embedding, cosine_similarity # 텍스트
 import openai
 import os, re, tenacity, pickle, unicodedata
 from pykospacing import Spacing
+from konlpy.tag import Okt
+from rank_bm25 import BM25Okapi
+okt = Okt()
 
 # 원숫자 ① -> 1., o->ㅇ, △-> ㅁ
 def circled_to_normal(char):
@@ -86,7 +89,7 @@ class Chatbot():
         pattern3 = r"\d{4}/\d{2}/\d{2}"
         blob_text = re.sub(f".*{pattern3}", "", blob_text)
         blob_text = re.sub(r"목차", r"", blob_text)
-        blob_text = re.sub(r'([ㄱ-ㅎㅏ-ㅣ가-힣]) (\의 |\로써 |\한다 |\은 |\을 |\를 |\이란 |\란 |\에 |\는 |\가 |\이라 |\라 |\이고 |\로 |\에서 |\에도 |\에게 |\야 )', r'\1\2', blob_text)
+        blob_text = re.sub(r'([ㄱ-ㅎㅏ-ㅣ가-힣]) (\의 |\로써 |\한다 |\은 |\을 |\를 |\이란 |\란 |\에 |\는 |\가 |\이라 |\라 |\이고 |\로 |\에서 |\에도 |\에게 |\야 |\과 )', r'\1\2', blob_text)
         blob_text = re.sub(r"결 산", r'결산', blob_text)
         blob_text = re.sub(r"기록 부", r'기록부', blob_text)
         blob_text = re.sub(r"재물조사 서", r'재물조사서', blob_text)
@@ -194,12 +197,46 @@ class Chatbot():
 
         return df
 
+    def paper_df_num(self, pdf): # 추가 처리 -> 약 300글자 넘지 않게
+        for n, p in enumerate(pdf.iloc[:, 0]):
+            if n != len(pdf.iloc[:, 0]) - 1 and len(p) > 500:
+                tt_l = ''
+                p_split = re.split(r'(?<=다.)\s', p)
+                num_splits = 0
+
+                if len(p) < 600:
+                    num_splits = 2
+                elif len(p) < 900:
+                    num_splits = 3
+                else:
+                    num_splits = 4
+
+                pdf_splits = pd.DataFrame(columns=pdf.columns)
+                split_lengths = [int(len(p) / num_splits) for _ in range(num_splits - 1)] + [len(p) - sum(int(len(p) / num_splits) for _ in range(num_splits - 1))]
+
+                for i, split_length in enumerate(split_lengths):
+                    split_text = ' '.join(p_split[:split_length])
+                    p_split = p_split[split_length:]
+                    pdf_splits.loc[i] = pdf.loc[n]
+                    pdf_splits.iloc[i, 0] = split_text
+
+                pdf = pd.concat([pdf.iloc[:n], pdf_splits, pdf.iloc[n + 1:]]).reset_index(drop=True)
+        pdf = pdf[pdf.iloc[:, 0] != ''].reset_index(drop=True)
+
+        df = pdf
+        return df
+
+
 print("Processing pdf")
 chatbot = Chatbot()
 openai.api_key = "your openai key" 
 pdf_folder = '규정' # PDF 파일이 있는 폴더 경로
-pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith('.pdf') and f.startswith('원규')]
-df_all = pd.DataFrame(columns=['text', 'CLS1', 'paper_title', 'embeddings'])
+pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith('.pdf') and not f.startswith('X')]
+df_all = pd.DataFrame(columns=['text', 'CLS1', 'paper_title'])
+
+######################################################################################################
+#### case 1 : cosine similary
+######################################################################################################
 for p_f in pdf_files:
     with open('규정/'+p_f, 'rb') as f:
         file = f.read()
@@ -210,15 +247,47 @@ for p_f in pdf_files:
     df.columns = ['text']
     df['CLS1'] = [p_f.split('_')[1]]*len(df)
     df['paper_title'] = [p_f.split('_')[2].split('[')[0]]*len(df)
-    df['text'] = df['text'].map(lambda x: '['+ p_f.split('_')[2].split('[')[0]+ '] ' + x.strip())
-    openai.api_key = "your openai key" 
-    embedding_model = "text-embedding-ada-002"
-    embeddings = df.iloc[:,0].apply([lambda x: get_embedding(x, engine=embedding_model)])
-    df["embeddings"] = embeddings
+    df_all = pd.concat([df_all, df])
+df = df_all.copy()
+df.reset_index(drop=True, inplace=True)
 
+df = chatbot.paper_df_num(df)
+df['text'] = df['text'].map(lambda x: '['+ p_f.split('_')[2].split('[')[0]+ '] ' + x.strip())
+embedding_model = "text-embedding-ada-002"
+embeddings = df.iloc[:,0].apply([lambda x: get_embedding(x, engine=embedding_model)])
+df["embeddings"] = embeddings
+print("Done processing pdf")
+
+######################################################################################################
+#### case 1 : bm25
+######################################################################################################
+def tokenizer(sent):
+  sent = okt.morphs(sent, norm=False, stem=True)
+  return sent
+
+pdf_folder = '규정' # PDF 파일이 있는 폴더 경로
+pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith('.pdf') and not f.startswith('X')]
+df_all = pd.DataFrame(columns=['text', 'CLS1', 'paper_title'])
+for p_f in pdf_files:
+    with open('규정/'+p_f, 'rb') as f:
+        file = f.read()
+    pdf = PdfReader(BytesIO(file))
+    paper_text = chatbot.parse_paper(pdf)
+    # global df
+    df = chatbot.paper_df(paper_text)
+    df.columns = ['text']
+    df['CLS1'] = [p_f.split('_')[1]]*len(df)
+    df['paper_title'] = [p_f.split('_')[2].split('[')[0]]*len(df)
+    df['text'] = df['text'].map(lambda x: '['+ p_f.split('_')[2].split('[')[0]+ '] ' + x.strip())
     df_all = pd.concat([df_all, df])
 
 df = df_all.copy()
 df.reset_index(inplace=True)
 df.drop(columns=['index'], inplace=True)
-print("Done processing pdf")
+
+embeddings = [tokenizer(doc) for doc in df.iloc[:,0]]
+bm25 = BM25Okapi(embeddings)
+
+# 저장
+# with open('정제파일/원예규A_bm25_model.pkl', 'wb') as f:
+#     pickle.dump(bm25, f)

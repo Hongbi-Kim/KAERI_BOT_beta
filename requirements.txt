@@ -2,10 +2,16 @@ tenacity
 matplotlib
 plotly
 scipy
-scipy
+flask
 openai[embeddings]
 google-cloud-translate
 google-auth
 google-api-core
 google-auth-httplib2
 google-cloud-core
+streamlit
+firebase_admin
+google-cloud-firestore
+rank_bm25
+konlpy
+JPype1
