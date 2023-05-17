@@ -1,3 +1,6 @@
+## 본 코드는 현재 파동이봇 코드와는 약간 다릅니다.
+## 전체적인 처리 과정은 비슷하니 참고용으로 봐주세요.
+
 import streamlit as st
 import json
 import pandas as pd
@@ -90,6 +93,8 @@ def search_embeddings(df, query, n=4, pprint=True):
 def create_prompt(df, query, conversation):
     result = search_embeddings(df, query)
     
+    ## 초기 프롬프트입니다.
+    ## 현재 파동이의 프롬프트와는 다름.
     system_role = f"""You are an AI language model named "파동이" whose expertise is reading and summarizing Korea Atomic Energy Research Institute regulatory documents. 
     You must take the given embeddings and return a very detailed summary of the document in the language of the query. 
     Your conversation history is as follows:
