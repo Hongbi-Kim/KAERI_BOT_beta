@@ -10,13 +10,13 @@
 <br>
 <h3> 👇🏻 예시 </h3>
 1) 초기화면<br>
-<img src="images/예시3.JPG" alt="앱1" width="70%"><br>
+<img src="images/페이지1.png" alt="앱1" width="70%"><br>
 
-2) 질문 입력<br>
-<img src="images/410_예시4.JPG" alt="앱1" width="70%"><br>
+2) 질문 입력 및 답변 생성 과정<br>
+<img src="images/페이지2.png" alt="앱1" width="70%"><br>
 
 3) 답변 생성 및 참고 문서 제공<br>
-<img src="images/410_예시3.JPG" alt="앱1" width="70%">
+<img src="images/페이지3.png" alt="앱1" width="70%">
 <br>
 <br>
 <h2>2️⃣ 주요 기능</h2>
@@ -36,14 +36,21 @@
 <div>
 <img alt="Python" src="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white"/>
 <img alt="Streamlit" src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?&style=for-the-badge&logo=Streamlit&logoColor=white"/>
-<img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-412991.svg?&style=for-the-badge&logo=OpenAI&logoColor=white"/><br>
+<img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-412991.svg?&style=for-the-badge&logo=OpenAI&logoColor=white"/>
+<img alt="Flask"
+src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white">
+<img alt="Google_Cloud"
+src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white"/><br><br>
 </div>
+<h2>5️⃣ 세미나 영상 </h2>
+<a href="https://www.youtube.com/live/NLI1REMI51s?feature=share">한국원자력연구원의 챗봇 파동이봇: 좌충우돌 개발 여정 (한국원자력연구원 김홍비 인턴연구원)</a>
+
 <br>
-<h2>5️⃣ 주요 개선 사항</h2>
+<h2>6️⃣ 업데이트</h2>
 <table>
   <thead>
     <tr>
-      <th>개선 날짜</th>
+      <th>날짜</th>
       <th>모델</th>
       <th>서비스</th>
     </tr>
@@ -97,12 +104,21 @@
       <td>
         1. DB 저장(질문-답변-평가)<br>
         2. 답변 만족도 체크 기능<br>
-        3. gpt 답변 생성 서버와 streamlit 앱 서버 분리<br>(분산시스템 구축)</td>
+        3. gpt 답변 생성 서버와 streamlit 앱 서버 분리<br>     (분산시스템 구축)
+      </td>
     </tr>
     </tr>
+    <td> 2023-05<br></td>
+      <td>
+      베타 서비스 공개<br><br>
+      </td>
+      <td>
+      이후 업데이트는 웹페이지에 적어둠.<br>
+      피드백 주기적 반용 중
+      </td>
   </tbody>
 </table>
 <br>
-<h2>6️⃣ 참고 자료</h2>
+<h2>7️⃣ 참고 자료</h2>
 &nbsp; - <a href="https://github.com/mukulpatnaik/researchgpt">Researchgpt</a>
 <p>&nbsp; - <a href="https://cloud.google.com/sdk/docs?hl=ko">Google Cloud</a></p>
